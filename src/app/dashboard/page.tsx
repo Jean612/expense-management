@@ -1,11 +1,3 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -14,6 +6,7 @@ import { CarTaxiFront, Ham, Plus, Ticket } from "lucide-react";
 import { Expense, columns } from "./columns";
 import { DataTable } from "./data-table";
 import { doto } from "../ui/fonts";
+import DashboardBreadcrumb from "@/components/dashboard-breadcrumb";
 
 const categories = [
   {
@@ -92,11 +85,14 @@ async function getData(): Promise<Expense[]> {
       date: new Date("2024-08-22"),
       category: "taxi",
     },
-  ]
+  ];
 }
 
+const prevItems = [{ href: "/dashboard", text: "Dashboard" }];
+const current = "Home";
+
 export default async function Page() {
-  const data = await getData()
+  const data = await getData();
 
   return (
     <>
@@ -104,17 +100,7 @@ export default async function Page() {
         <div className="flex items-center gap-2 px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Home</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <DashboardBreadcrumb current={current} prevItems={prevItems} />
         </div>
       </header>
 
@@ -122,7 +108,9 @@ export default async function Page() {
         <Card className="w-3/4 border-none shadow-none">
           <CardHeader>
             <CardTitle>
-              <h2 className={`scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl ${doto.className} antialiased`}>
+              <h2
+                className={`scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl ${doto.className} antialiased`}
+              >
                 Week 56 | 18-11-2024 to 24-11-2024
               </h2>
             </CardTitle>
