@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import "@/app/globals.css";
 
@@ -16,10 +20,7 @@ export default function Layout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        <div className="p-4">{children}</div>
-      </main>
+      <SidebarInset className="pr-4">{children}</SidebarInset>
     </SidebarProvider>
   );
 }
