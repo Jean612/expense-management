@@ -34,7 +34,7 @@ const currencies = [
   },
 ];
 
-export default function DashboardRightSection() {
+export default function DashboardAddExpense() {
   const currentCurrency = useCurrencyStore((state) => state.currency);
   const setCurrency = useCurrencyStore((state) => state.setCurrency);
 

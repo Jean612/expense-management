@@ -1,29 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { CarTaxiFront, Ham, Plus, Ticket } from "lucide-react";
 import { Expense, columns } from "./columns";
 import { DataTable } from "./data-table";
 import DashboardBreadcrumb from "@/components/dashboard-breadcrumb";
 import WeekHeaderDashboard from "@/components/week-header-dashboard";
-import { formatCurrency } from "@/lib/utils";
-import DashboardRightSection from "@/components/dashboard-right-section";
+import DashboardAddExpense from "@/components/dashboard-add-expense";
+import DashboardTotalExpense from "@/components/dashboard-total-expense";
+import DashboardExpenseByCategory from "@/components/dashboard-expense-by-category";
 
 const categories = [
   {
     name: "Food",
-    icon: Ham,
-    total: "S/. 5.00",
+    icon: "Ham" as "Ham",
+    total: 5.00,
   },
   {
     name: "Transport",
-    icon: CarTaxiFront,
-    total: "S/. 5.00",
+    icon: "CarTaxiFront" as "CarTaxiFront",
+    total: 5.10,
   },
   {
     name: "Entertainment",
-    icon: Ticket,
-    total: "S/. 5.00",
+    icon: "Ticket" as "Ticket",
+    total: 5.60,
   },
 ];
 
@@ -109,38 +109,14 @@ export default async function Page() {
         <Card className="w-3/4 border-none shadow-none">
           <WeekHeaderDashboard />
           <CardContent className="flex justify-center items-center gap-2">
-            <div className="w-1/5">
-              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                Total expense
-              </h3>
-              <p className="scroll-m-20  pb-2 text-3xl font-light tracking-tight first:mt-0">
-                {formatCurrency(5000, "PEN")}
-              </p>
-            </div>
+            <DashboardTotalExpense totalExpense={500} />
             <Separator orientation="vertical" />
-            <div className="w-4/5 grid auto-rows-min gap-4 md:grid-cols-3">
-              {categories.map((category) => (
-                <div
-                  className="aspect-video rounded-xl bg-muted/50"
-                  key={category.name}
-                >
-                  <div className="flex flex-col items-center justify-center h-full">
-                    <category.icon className="size-8" />
-                    <span className="text-lg font-semibold tracking-tight">
-                      {category.name}
-                    </span>
-                    <span className="text-lg font-light tracking-tight">
-                      {category.total}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <DashboardExpenseByCategory categories={categories} />
           </CardContent>
         </Card>
 
         <Separator orientation="vertical" />
-        <DashboardRightSection />
+        <DashboardAddExpense />
       </Card>
 
       <div className="container mx-auto py-10">
