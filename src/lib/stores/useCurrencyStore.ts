@@ -1,11 +1,21 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 type CurrencyStore = {
-    currency: string;
-    setCurrency: (currency: string) => void;
-}
+  currency: "PEN" | "USD" | "EUR";
+  setCurrency: (currency: "PEN" | "USD" | "EUR") => void;
+};
 
-const useCurrencyStore = create<CurrencyStore>((set) => ({
-    currency: 'PEN',
-    setCurrency: (currency: string) => set({ currency }),
-}));
+const useCurrencyStore = create<CurrencyStore>()(
+  persist(
+    (set) => ({
+      currency: "PEN",
+      setCurrency: (currency: "PEN" | "USD" | "EUR") => set({ currency }),
+    }),
+    {
+      name: "currency-store",
+    }
+  )
+);
+
+export default useCurrencyStore;

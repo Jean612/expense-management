@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { CarTaxiFront, Ham, Plus, Ticket } from "lucide-react";
@@ -8,6 +7,7 @@ import { DataTable } from "./data-table";
 import DashboardBreadcrumb from "@/components/dashboard-breadcrumb";
 import WeekHeaderDashboard from "@/components/week-header-dashboard";
 import { formatCurrency } from "@/lib/utils";
+import DashboardRightSection from "@/components/dashboard-right-section";
 
 const categories = [
   {
@@ -114,7 +114,7 @@ export default async function Page() {
                 Total expense
               </h3>
               <p className="scroll-m-20  pb-2 text-3xl font-light tracking-tight first:mt-0">
-                {formatCurrency(5000, "PEN", "es-PE")}
+                {formatCurrency(5000, "PEN")}
               </p>
             </div>
             <Separator orientation="vertical" />
@@ -140,13 +140,7 @@ export default async function Page() {
         </Card>
 
         <Separator orientation="vertical" />
-
-        <Card className="w-1/4 border-none shadow-none h-full flex items-center justify-center">
-          <Button>
-            <Plus />
-            <span className="ml-2">Add Expense</span>
-          </Button>
-        </Card>
+        <DashboardRightSection />
       </Card>
 
       <div className="container mx-auto py-10">

@@ -34,9 +34,21 @@ export function formatDateWithIntl(date: Date): string {
   return new Intl.DateTimeFormat(navigator.language).format(date);
 }
 
-export function formatCurrency(value: number, currency: "PEN" | "USD", locale = navigator.language): string {
+export function formatCurrency(value: number, currency: "PEN" | "USD" | "EUR"): string {
+  const locale = getLocaleByCurrency(currency);
+
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
   }).format(value);
+}
+
+function getLocaleByCurrency(currency: "PEN" | "USD" | "EUR"): string {
+  if (currency === "PEN") {
+    return "es-PE";
+  } else if (currency === "USD") {
+    return "en-US";
+  } else {
+    return "en-GB";
+  }
 }
