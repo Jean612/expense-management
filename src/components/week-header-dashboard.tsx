@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { doto } from "@/app/ui/fonts";
+import { nunito } from "@/app/ui/fonts";
 import { CardHeader, CardTitle } from "./ui/card";
 import useCurrentWeekStore from "@/lib/stores/useCurrentWeekStore";
 import { getWeekRange } from "@/lib/utils";
@@ -41,7 +41,7 @@ export default function WeekHeaderDashboard(): JSX.Element {
           <ChevronLeft />
         </Button>
         <h2
-          className={`scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl ${doto.className} antialiase flex items-center`}
+          className={`scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl ${nunito.className} antialiase flex items-center`}
         >
           <span>Week &nbsp;</span>
           {isEditing ? (
