@@ -13,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { use } from "react";
 import useCurrencyStore from "@/lib/stores/useCurrencyStore";
 
 // This type is used to define the shape of our data.
