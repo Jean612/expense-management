@@ -5,8 +5,9 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { CarTaxiFront, Ham, Plus, Ticket } from "lucide-react";
 import { Expense, columns } from "./columns";
 import { DataTable } from "./data-table";
-import { doto } from "../ui/fonts";
 import DashboardBreadcrumb from "@/components/dashboard-breadcrumb";
+import WeekHeaderDashboard from "@/components/week-header-dashboard";
+import { formatCurrency } from "@/lib/utils";
 
 const categories = [
   {
@@ -106,22 +107,14 @@ export default async function Page() {
 
       <Card className="w-full flex items-center justify-center border-none shadow-none">
         <Card className="w-3/4 border-none shadow-none">
-          <CardHeader>
-            <CardTitle>
-              <h2
-                className={`scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl ${doto.className} antialiased`}
-              >
-                Week 56 | 18-11-2024 to 24-11-2024
-              </h2>
-            </CardTitle>
-          </CardHeader>
+          <WeekHeaderDashboard />
           <CardContent className="flex justify-center items-center gap-2">
             <div className="w-1/5">
               <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Total expense
               </h3>
               <p className="scroll-m-20  pb-2 text-3xl font-light tracking-tight first:mt-0">
-                S/. 20.00
+                {formatCurrency(5000, "PEN", "es-PE")}
               </p>
             </div>
             <Separator orientation="vertical" />

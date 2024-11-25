@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { parse, format } from "date-fns";
+import { formatDateWithIntl } from "@/lib/utils";
 import { MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -39,7 +39,7 @@ export const columns: ColumnDef<Expense>[] = [
     header: "Date",
     cell: ({ row }) => {
       const date = new Date(row.getValue("date"));
-      return <div>{format(date, "P")}</div>;
+      return <div>{formatDateWithIntl(date)}</div>;
     },
   },
   {
