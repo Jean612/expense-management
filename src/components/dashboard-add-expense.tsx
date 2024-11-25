@@ -79,7 +79,7 @@ export default function DashboardAddExpense() {
           <DialogHeader>
             <DialogTitle>Add Expense</DialogTitle>
             <DialogDescription>
-              Add your new expenses here. Click save when you're done.
+              Add your new expenses here. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">

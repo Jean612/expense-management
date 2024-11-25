@@ -25,6 +25,8 @@ export type Expense = {
   category: "food" | "taxi" | "clothes" | "health" | "others" | "entertainment";
 };
 
+const currency = useCurrencyStore((state) => state.currency);
+
 export const columns: ColumnDef<Expense>[] = [
   {
     accessorKey: "bank",
@@ -48,8 +50,6 @@ export const columns: ColumnDef<Expense>[] = [
     header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
-      const currency = useCurrencyStore((state) => state.currency);
-
       const formatted = formatCurrency(amount, currency);
 
       return <div className="text-right font-medium">{formatted}</div>;
