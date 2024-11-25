@@ -26,7 +26,7 @@ export default function WeekHeaderDashboard(): JSX.Element {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleSaveWeekNumber(); // Guardar cuando se presiona "Enter"
+      handleSaveWeekNumber();
     }
   };
 
