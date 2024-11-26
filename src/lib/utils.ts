@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { Currency, Locale } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -31,10 +32,16 @@ export function getCurrentWeekNumber(): number {
 }
 
 export function formatDateWithIntl(date: Date): string {
-  return new Intl.DateTimeFormat(navigator.language).format(date);
+  const locale =
+    typeof navigator !== "undefined" ? navigator.language : "es-PE";
+  return new Intl.DateTimeFormat(locale).format(date);
 }
 
-export function formatCurrency(value: number, currency: "PEN" | "USD" | "EUR"): string {
+export function formatCurrency(value: number, currency: Currency): string {
+  if (!currency) {
+    throw new Error("Currency code is required");
+  }
+
   const locale = getLocaleByCurrency(currency);
 
   return new Intl.NumberFormat(locale, {
@@ -43,12 +50,14 @@ export function formatCurrency(value: number, currency: "PEN" | "USD" | "EUR"): 
   }).format(value);
 }
 
-function getLocaleByCurrency(currency: "PEN" | "USD" | "EUR"): string {
+function getLocaleByCurrency(currency: Currency): Locale {
   if (currency === "PEN") {
     return "es-PE";
   } else if (currency === "USD") {
     return "en-US";
-  } else {
+  } else if (currency === "EUR") {
     return "en-GB";
   }
+
+  return "es-PE";
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { Currency } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 
 type Props = { totalExpense: number };
@@ -14,7 +15,7 @@ export default function DashboardTotalExpense({
         Total expense
       </h3>
       <p className="scroll-m-20  pb-2 text-3xl font-light tracking-tight first:mt-0">
-        {formatCurrency(totalExpense, "PEN")}
+        {formatCurrency(totalExpense, "PEN" as Currency)}
       </p>
     </div>
   );

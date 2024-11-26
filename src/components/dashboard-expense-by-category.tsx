@@ -2,7 +2,7 @@
 
 import { CarTaxiFront, Ham, Ticket } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
-import { IconsName } from "@/lib/types";
+import { Currency, IconsName } from "@/lib/types";
 
 const iconMap = {
   Ham,
@@ -38,7 +38,7 @@ export default function DashboardExpenseByCategory({
                 {category.name}
               </span>
               <span className="text-lg font-light tracking-tight">
-                {formatCurrency(category.total, "PEN")}
+                {formatCurrency(category.total, "PEN" as Currency)}
               </span>
             </div>
           </div>
