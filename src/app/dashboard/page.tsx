@@ -8,21 +8,22 @@ import WeekHeaderDashboard from "@/components/week-header-dashboard";
 import DashboardAddExpense from "@/components/dashboard-add-expense";
 import DashboardTotalExpense from "@/components/dashboard-total-expense";
 import DashboardExpenseByCategory from "@/components/dashboard-expense-by-category";
+import { IconsName } from "@/lib/types";
 
 const categories = [
   {
     name: "Food",
-    icon: "Ham" as "Ham",
+    icon: "Ham" as IconsName,
     total: 5.00,
   },
   {
     name: "Transport",
-    icon: "CarTaxiFront" as "CarTaxiFront",
+    icon: "CarTaxiFront" as IconsName,
     total: 5.10,
   },
   {
     name: "Entertainment",
-    icon: "Ticket" as "Ticket",
+    icon: "Ticket" as IconsName,
     total: 5.60,
   },
 ];
@@ -36,6 +37,7 @@ async function getData(): Promise<Expense[]> {
       bank: "bbva",
       date: new Date("2024-01-15"),
       category: "food",
+      currency: "PEN",
     },
     {
       id: "2",
@@ -43,6 +45,7 @@ async function getData(): Promise<Expense[]> {
       bank: "diners",
       date: new Date("2024-02-10"),
       category: "taxi",
+      currency: "PEN",
     },
     {
       id: "3",
@@ -50,6 +53,7 @@ async function getData(): Promise<Expense[]> {
       bank: "bbva",
       date: new Date("2024-03-05"),
       category: "health",
+      currency: "USD",
     },
     {
       id: "4",
@@ -57,6 +61,7 @@ async function getData(): Promise<Expense[]> {
       bank: "diners",
       date: new Date("2024-04-20"),
       category: "clothes",
+      currency: "PEN",
     },
     {
       id: "5",
@@ -64,6 +69,7 @@ async function getData(): Promise<Expense[]> {
       bank: "bbva",
       date: new Date("2024-05-15"),
       category: "entertainment",
+      currency: "PEN",
     },
     {
       id: "6",
@@ -71,6 +77,7 @@ async function getData(): Promise<Expense[]> {
       bank: "diners",
       date: new Date("2024-06-10"),
       category: "others",
+      currency: "PEN",
     },
     {
       id: "7",
@@ -78,6 +85,7 @@ async function getData(): Promise<Expense[]> {
       bank: "bbva",
       date: new Date("2024-07-01"),
       category: "food",
+      currency: "EUR",
     },
     {
       id: "8",
@@ -85,6 +93,7 @@ async function getData(): Promise<Expense[]> {
       bank: "diners",
       date: new Date("2024-08-22"),
       category: "taxi",
+      currency: "PEN",
     },
   ];
 }

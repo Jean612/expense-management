@@ -1,0 +1,1 @@
+export type IconsName = "Ham" | "CarTaxiFront" | "Ticket";

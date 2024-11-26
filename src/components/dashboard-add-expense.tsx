@@ -16,43 +16,39 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectLabel,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
 
-import useCurrencyStore from "@/lib/stores/useCurrencyStore";
 
-const currencies = [
-  {
-    name: "USD",
-    symbol: "$",
-    value: "USD",
-  },
-  {
-    name: "PEN",
-    symbol: "S/.",
-    value: "PEN",
-  },
-  {
-    name: "EUR",
-    symbol: "€",
-    value: "EUR",
-  },
-];
+// const currencies = [
+//   {
+//     name: "USD",
+//     symbol: "$",
+//     value: "USD",
+//   },
+//   {
+//     name: "PEN",
+//     symbol: "S/.",
+//     value: "PEN",
+//   },
+//   {
+//     name: "EUR",
+//     symbol: "€",
+//     value: "EUR",
+//   },
+// ];
 
 export default function DashboardAddExpense() {
-  const currentCurrency = useCurrencyStore((state) => state.currency);
-  const setCurrency = useCurrencyStore((state) => state.setCurrency);
-
   return (
     <Card className="w-1/4 border-none shadow-none h-full flex items-center justify-center flex-col gap-2">
-      <Select value={currentCurrency} onValueChange={setCurrency}>
+      {/* <Select value={currentCurrency} onValueChange={setCurrency}>
         <SelectTrigger className="w-[128px]">
           <SelectValue placeholder="Currency" />
         </SelectTrigger>
@@ -66,7 +62,7 @@ export default function DashboardAddExpense() {
             ))}
           </SelectGroup>
         </SelectContent>
-      </Select>
+      </Select> */}
 
       <Dialog>
         <DialogTrigger asChild>

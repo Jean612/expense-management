@@ -1,8 +1,8 @@
 "use client";
 
 import { CarTaxiFront, Ham, Ticket } from "lucide-react";
-import useCurrencyStore from "@/lib/stores/useCurrencyStore";
 import { formatCurrency } from "@/lib/utils";
+import { IconsName } from "@/lib/types";
 
 const iconMap = {
   Ham,
@@ -14,14 +14,13 @@ export type DashboardExpenseByCategoryProps = {
   categories: {
     name: string;
     total: number;
-    icon: keyof typeof iconMap;
+    icon: IconsName;
   }[];
 };
 
 export default function DashboardExpenseByCategory({
   categories,
 }: DashboardExpenseByCategoryProps): JSX.Element {
-  const currency = useCurrencyStore((state) => state.currency);
 
   return (
     <div className="w-4/5 grid auto-rows-min gap-4 md:grid-cols-3">
@@ -39,7 +38,7 @@ export default function DashboardExpenseByCategory({
                 {category.name}
               </span>
               <span className="text-lg font-light tracking-tight">
-                {formatCurrency(category.total, currency)}
+                {formatCurrency(category.total, "PEN")}
               </span>
             </div>
           </div>

@@ -13,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import useCurrencyStore from "@/lib/stores/useCurrencyStore";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -23,9 +22,8 @@ export type Expense = {
   bank: "bbva" | "diners";
   date: Date;
   category: "food" | "taxi" | "clothes" | "health" | "others" | "entertainment";
+  currency: "USD" | "EUR" | "PEN";
 };
-
-const currency = useCurrencyStore((state) => state.currency);
 
 export const columns: ColumnDef<Expense>[] = [
   {
@@ -50,7 +48,7 @@ export const columns: ColumnDef<Expense>[] = [
     header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
-      const formatted = formatCurrency(amount, currency);
+      const formatted = formatCurrency(amount, row.getValue("currency"));
 
       return <div className="text-right font-medium">{formatted}</div>;
     },
